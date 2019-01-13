@@ -1,18 +1,47 @@
 <html>
+<script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBuKj9km4rmHzR1K5qUMHOK2jcz0X0lgNU",
+    authDomain: "to-do-dev.firebaseapp.com",
+    databaseURL: "https://to-do-dev.firebaseio.com",
+    projectId: "to-do-dev",
+    storageBucket: "to-do-dev.appspot.com",
+    messagingSenderId: "452574161223"
+  };
+  firebase.initializeApp(config);
+
+
+  var userDataRef = firebase.database().ref("UserData").orderByKey();
+  userDataRef.once("tasks").then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+  var key = childSnapshot.key;
+  var childData = childSnapshot.val();
+
+  var name_val = childSnapshot.val().due_date;
+  var id_val = childSnapshot.val().task;
+
+  $("#name").append(name_val);
+  $("#id").append(id_val);
+
+  });
+});
+</script>
     <head>
         <!-- META -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
         <title>Simple Chatbot</title>
-    
+
         <!-- SCROLLS -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
         <style>
             html                    { overflow-y:scroll; }
             body                    { padding-top:50px; }
         </style>
-   
+
     </head>
 
     <body>
