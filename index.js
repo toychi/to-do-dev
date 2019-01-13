@@ -11,9 +11,6 @@ app.set("port", process.env.PORT || 5000);
 // Process application/json
 app.use(bodyParser.json());
 
-process.env.CHANNEL_ACCESS_TOKEN =
-  "LprJ2or3L5+2hOn4qkZPv/s3XNff2q08+kDRe8oWvb3UpBKJudvNCPgdstxQZIT7G0qwRyY39PjI2E/MJzTa1teQj19mE6QfQpQZZwDdNxn6ESWGbl2AMhYHRq+bP4u8z5US28J2MD9+mTZPGHmHWQdB04t89/1O/w1cDnyilFU=";
-
 const client = new line.Client({
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN
 });
