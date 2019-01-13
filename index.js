@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const path = require('path');
 const line = require("@line/bot-sdk");
 const app = express();
-const firebaseService = require('../services/firebase-service');
+const firebaseService = require('./firebase-service');
 
 app.set("port", process.env.PORT || 5000);
 // Process application/json
@@ -30,6 +30,7 @@ app.post("/webhook", (req, res) => {
   console.log(typeof sender, typeof text);
   firebaseService.getHogwartHouses().then(function(tt) {
     _messages[0].text = tt;
+    console.log(tt);
     client
     .replyMessage(replyToken, _messages)
     .then(() => {
