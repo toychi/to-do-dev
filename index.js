@@ -20,7 +20,7 @@ const client = new line.Client({
 
 const message = {
   type: "text",
-  text: "Hello World!"
+  text: "https://to-do-dev.herokuapp.com/"
 };
 
 let _messages = [
@@ -51,7 +51,7 @@ app.post("/webhook", (req, res) => {
 
   if (text == "edit") {
     client
-      .replyMessage(replyToken, "https://to-do-dev.herokuapp.com/")
+      .replyMessage(replyToken, message)
       .then(() => {
         res.sendStatus(200);
       })
