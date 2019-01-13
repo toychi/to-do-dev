@@ -14,6 +14,14 @@ class FirebaseService {
 		ref = db.ref('task');
     }
 
+    addTask(name, date, time) {
+        db.ref('tasks/').set({
+            task: name,
+            due_date: date,
+            due_time : time
+        });
+    }
+
     getHogwartHouses() {
         return new Promise(function (resolve, reject) {
             try {

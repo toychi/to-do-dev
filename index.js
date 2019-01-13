@@ -45,6 +45,14 @@ app.post("/webhook", (req, res) => {
       // error handling
     });
   })
+
+  var arr_str = text.split(" ");
+  var name = arr_str[0];
+  var date = arr_str[1];
+  var time = arr_str[2];
+
+  firebaseService.addTask(name, date, time);
+
 });
 
 app.get("*", (req, res) => {
