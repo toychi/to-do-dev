@@ -58,9 +58,20 @@ app.post("/webhook", (req, res) => {
 
   firebaseService.addTask(taskId, name, date, time);
 
+  if(text == "edit"){
+    client
+    .replyMessage(replyToken, "https://to-do-dev.herokuapp.com/")
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      // error handling
+    });
+
+  }
 });
 
-app.get("/login", (req, res) => {
+app.get("/", (req, res) => {
   res.redirect('https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1638410516&redirect_uri=https://to-do-dev.herokuapp.com/edit&state=12345abcde&scope=openid');
 })
 
