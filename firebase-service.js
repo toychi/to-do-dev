@@ -14,8 +14,8 @@ class FirebaseService {
 		ref = db.ref('task');
     }
 
-    addTask(name, date, time) {
-        db.ref('tasks/').set({
+    addTask(taskId, name, date, time) {
+        db.ref('tasks/' + taskId).set({
             task: name,
             due_date: date,
             due_time : time
