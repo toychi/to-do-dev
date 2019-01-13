@@ -28,14 +28,17 @@ app.post("/webhook", (req, res) => {
   var replyToken = req.body.events[0].replyToken;
   console.log(text, sender, replyToken);
   console.log(typeof sender, typeof text);
-  client
-    .replyMessage(replyToken, firebaseService.getHogwartHouses())
+  firebaseService.getHogwartHouses().then(function(tt) {
+    _messages[0].text = tt;
+    client
+    .replyMessage(replyToken, _messages)
     .then(() => {
       res.sendStatus(200);
     })
     .catch(err => {
       // error handling
     });
+  })
 });
 
 app.get("*", (req, res) => {
