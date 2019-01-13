@@ -22,6 +22,11 @@ const message = {
   text: "Hello World!"
 };
 
+let _messages = [{
+  type: 'text',
+  text: message
+}];
+
 app.post("/webhook", (req, res) => {
   var text = req.body.events[0].message.text;
   var sender = req.body.events[0].source.userId;
