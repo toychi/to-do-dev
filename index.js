@@ -60,11 +60,11 @@ app.post("/webhook", (req, res) => {
 
 });
 
-app.get("*", (req, res) => {
+app.get("/login", (req, res) => {
   res.redirect('https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1638410516&redirect_uri=https://to-do-dev.herokuapp.com/edit&state=12345abcde&scope=openid');
 })
 
-app.get("/edit", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, './public', 'index.html'));
 });
 
